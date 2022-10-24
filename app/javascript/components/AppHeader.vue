@@ -24,9 +24,15 @@ import { GitHubIcon } from '@/components/icons'
         </ul>
       </div>
       <div class="tooltip tooltip-bottom" data-tip="View on GitHub">
-        <label tabindex="0" class="btn btn-ghost">
+        <a
+          tabindex="0"
+          class="btn btn-ghost"
+          href="https://github.com/souk4711/playcode"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <GitHubIcon class="h-5 w-5 md:h-6 md:w-6" />
-        </label>
+        </a>
       </div>
     </div>
   </div>
