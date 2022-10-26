@@ -19,10 +19,10 @@ const i18n = (() => {
   })
 })()
 
-const updateI18nLocale = (locale): void => {
+const changeI18nLocale = (locale) => {
   i18n.global.locale.value = locale
   localStorage.setItem('i18n.locale', locale)
 }
 
 export default i18n
-export { updateI18nLocale }
+export { changeI18nLocale }

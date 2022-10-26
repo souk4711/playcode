@@ -11,7 +11,8 @@
     "vue/no-restricted-class": "error",
     "vue/no-template-target-blank": "error",
     "vue/no-this-in-before-route-enter": "error",
-    "vue/prefer-prop-type-boolean-first": "error"
+    "vue/prefer-prop-type-boolean-first": "error",
+    "@typescript-eslint/explicit-function-return-type": "off"
   },
   "parserOptions": {
     "ecmaVersion": "latest"
