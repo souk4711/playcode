@@ -19,7 +19,6 @@ import { changeI18nLocale } from '@/locales'
           :class="{ active: locale === $i18n.locale }"
           tabindex="0"
           @click="changeI18nLocale(locale)"
-          @keydown.enter="changeI18nLocale(locale)"
         >
           <img
             class="w-6 h-6"

@@ -1,5 +1,5 @@
-import languages from './languages.ts'
-import runs from './runs.ts'
+import languages from './languages'
+import runs from './runs'
 
 export default {
   languages,

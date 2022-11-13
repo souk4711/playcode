@@ -2,38 +2,7 @@
 import { onMounted } from 'vue'
 import { themeChange } from 'theme-change'
 import { SwatchIcon } from '@heroicons/vue/24/solid'
-
-const themes = [
-  'light',
-  'dark',
-  'cupcake',
-  'bumblebee',
-  'emerald',
-  'corporate',
-  'synthwave',
-  'retro',
-  'cyberpunk',
-  'valentine',
-  'halloween',
-  'garden',
-  'forest',
-  'aqua',
-  'lofi',
-  'pastel',
-  'fantasy',
-  'wireframe',
-  'black',
-  'luxury',
-  'dracula',
-  'cmyk',
-  'autumn',
-  'business',
-  'acid',
-  'lemonade',
-  'night',
-  'coffee',
-  'winter'
-]
+import themes from '@/config/themes'
 
 onMounted(() => {
   themeChange(false)

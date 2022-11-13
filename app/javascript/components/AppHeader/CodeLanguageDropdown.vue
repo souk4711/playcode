@@ -3,6 +3,11 @@ import { ChevronDownIcon } from '@heroicons/vue/24/solid'
 import { usePlayStore } from '@/stores'
 
 const store = usePlayStore()
+
+const onClick = (language) => {
+  store.changeLanguage(language.id)
+  document.activeElement.blur()
+}
 </script>
 
 <template>
@@ -11,7 +16,9 @@ const store = usePlayStore()
       <span
         class="flex-1 text-left truncate"
         :class="{ uppercase: !store.language }"
-        >{{ store.language?.name || $t('changeCodeLanguage') }}</span
+        >{{
+          store.language ? store.language.name : $t('changeCodeLanguage')
+        }}</span
       >
       <ChevronDownIcon class="h-4 w-4" />
     </label>
@@ -22,8 +29,7 @@ const store = usePlayStore()
         <div
           class="btn btn-ghost w-full justify-start"
           tabindex="0"
-          @click="store.changeLanguage(language.id)"
-          @keydown.enter="store.changeLanguage(language.id)"
+          @click="onClick(language)"
         >
           <span class="truncate">{{ language.name }}</span>
         </div>

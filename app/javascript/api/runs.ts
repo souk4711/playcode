@@ -1,4 +1,4 @@
-const create = () => {}
+const create = async () => {}
 
 export default {
   create

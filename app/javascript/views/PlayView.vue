@@ -1,12 +1,13 @@
 <script setup lang="ts">
 import { onMounted } from 'vue'
 import { usePlayStore } from '@/stores'
-import { CodeEditor, ConsoleOutput } from './PlayView'
+import CodeEditor from './PlayView/CodeEditor.vue'
+import ConsoleOutput from './PlayView/ConsoleOutput.vue'
 
 const store = usePlayStore()
 
-onMounted(() => {
-  store.fetch()
+onMounted(async () => {
+  await store.fetch()
 })
 </script>
 

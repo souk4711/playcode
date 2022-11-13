@@ -11,6 +11,8 @@
     "dev": "vite"
   },
   "dependencies": {
+    "@codemirror/language": "^6.3.0",
+    "@codemirror/legacy-modes": "^6.2.0",
     "@heroicons/vue": "^2.0.12",
     "axios": "^1.1.3",
     "codemirror": "^6.0.1",
