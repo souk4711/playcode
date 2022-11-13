@@ -4,7 +4,7 @@ import { usePlayStore } from '@/stores'
 
 const store = usePlayStore()
 
-const onClick = (language) => {
+const changeLanguage = (language) => {
   store.changeLanguage(language.id)
   document.activeElement.blur()
 }
@@ -29,7 +29,7 @@ const onClick = (language) => {
         <div
           class="btn btn-ghost w-full justify-start"
           tabindex="0"
-          @click="onClick(language)"
+          @click="changeLanguage(language)"
         >
           <span class="truncate">{{ language.name }}</span>
         </div>

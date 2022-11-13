@@ -1,6 +1,11 @@
 <script setup lang="ts">
 import { LanguageIcon } from '@heroicons/vue/24/solid'
 import { changeI18nLocale } from '@/locales'
+
+const changeLocale = (locale) => {
+  changeI18nLocale(locale)
+  document.activeElement.blur()
+}
 </script>
 
 <template>
@@ -18,7 +23,7 @@ import { changeI18nLocale } from '@/locales'
           class="btn btn-ghost"
           :class="{ active: locale === $i18n.locale }"
           tabindex="0"
-          @click="changeI18nLocale(locale)"
+          @click="changeLocale(locale)"
         >
           <img
             class="w-6 h-6"
