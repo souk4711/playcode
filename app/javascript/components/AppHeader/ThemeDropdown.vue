@@ -18,6 +18,7 @@ onMounted(() => {
     </div>
     <ul
       class="dropdown-content max-h-96 h-[70vh] w-52 overflow-y-auto p-2 mt-4 bg-base-200 text-base-content shadow grid gap-2"
+      tabindex="0"
     >
       <li v-for="theme in themes" :key="theme">
         <button

@@ -17,6 +17,7 @@ const changeLocale = (locale) => {
     </div>
     <ul
       class="dropdown-content menu w-52 p-2 mt-4 bg-base-100 text-base-content shadow gap-1"
+      tabindex="0"
     >
       <li v-for="locale in $i18n.availableLocales" :key="locale">
         <div

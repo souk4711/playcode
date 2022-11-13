@@ -24,6 +24,7 @@ const changeLanguage = (language) => {
     </label>
     <ul
       class="dropdown-content max-h-96 h-[70vh] w-48 overflow-y-auto bg-base-100 text-base-content shadow"
+      tabindex="0"
     >
       <li v-for="language in store.availableLanguages" :key="language.id">
         <div
