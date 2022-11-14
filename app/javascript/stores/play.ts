@@ -1,5 +1,6 @@
 import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
+import { useSessionStorage } from '@vueuse/core'
 import api from '@/api'
 
 const enum RunStatus {
@@ -9,12 +10,11 @@ const enum RunStatus {
 }
 
 export const usePlayStore = defineStore('play', () => {
-  const languageId = ref('')
-  const availableLanguages = ref([])
+  const languageId = useSessionStorage('playStore#languageId', '')
+  const availableLanguages = useSessionStorage('playStore#availableLanguages', [])
 
-  const file = ref({
-    content: ''
-  })
+  const fileInitialValue = { content: '' }
+  const file = useSessionStorage('playStore#file', fileInitialValue, { mergeDefaults: true })
 
   const runStatus = ref(RunStatus.Norun)
   const runResult = ref(null)
