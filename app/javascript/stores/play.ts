@@ -26,9 +26,7 @@ export const usePlayStore = defineStore('play', () => {
     runResult,
 
     language: computed(() => {
-      return availableLanguages.value.find(
-        (language) => language.id === languageId.value
-      )
+      return availableLanguages.value.find((language) => language.id === languageId.value)
     }),
 
     isNorun: computed(() => runStatus.value === RunStatus.Norun),

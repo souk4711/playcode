@@ -1,10 +1,6 @@
 {
   "extends": "@vue/tsconfig/tsconfig.web.json",
-  "include": [
-    "vite-env.d.ts",
-    "app/javascript/**/*",
-    "app/javascript/**/*.vue"
-  ],
+  "include": ["vite-env.d.ts", "app/javascript/**/*", "app/javascript/**/*.vue"],
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {

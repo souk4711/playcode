@@ -21,19 +21,10 @@ onMounted(() => {
       tabindex="0"
     >
       <li v-for="theme in themes" :key="theme">
-        <button
-          class="w-full rounded-md outline outline-2"
-          data-act-class="outline"
-          :data-set-theme="theme"
-        >
-          <div
-            class="w-full rounded-md bg-base-100 text-base-content font-sans cursor-pointer"
-            :data-theme="theme"
-          >
+        <button class="w-full rounded-md outline outline-2" data-act-class="outline" :data-set-theme="theme">
+          <div class="w-full rounded-md bg-base-100 text-base-content font-sans cursor-pointer" :data-theme="theme">
             <div class="grid grid-cols-5 grid-rows-3">
-              <div
-                class="col-span-5 row-span-3 row-start-1 flex gap-1 py-3 px-4"
-              >
+              <div class="col-span-5 row-span-3 row-start-1 flex gap-1 py-3 px-4">
                 <div class="flex-grow text-left text-sm font-bold">
                   {{ theme }}
                 </div>
