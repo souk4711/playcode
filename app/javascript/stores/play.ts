@@ -6,7 +6,8 @@ import api from '@/api'
 const enum RunStatus {
   Norun,
   Running,
-  Completed
+  Completed,
+  Unexpected
 }
 
 export const usePlayStore = defineStore('play', () => {
@@ -32,6 +33,7 @@ export const usePlayStore = defineStore('play', () => {
     isNorun: computed(() => runStatus.value === RunStatus.Norun),
     isRunning: computed(() => runStatus.value === RunStatus.Running),
     isCompleted: computed(() => runStatus.value === RunStatus.Completed),
+    isUnexpected: computed(() => runStatus.value === RunStatus.Unexpected),
 
     fetch: async () => {
       availableLanguages.value = await api.languages.list()
@@ -41,8 +43,9 @@ export const usePlayStore = defineStore('play', () => {
       try {
         runStatus.value = RunStatus.Running
         runResult.value = await api.runs.create({ lang: languageId, file })
-      } finally {
         runStatus.value = RunStatus.Completed
+      } catch {
+        runStatus.value = RunStatus.Unexpected
       }
     },
 
