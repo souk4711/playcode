@@ -4,9 +4,12 @@ import { usePlayStore } from '@/stores'
 
 const store = usePlayStore()
 
-const changeLanguage = (language) => {
-  store.changeLanguage(language.id)
-  document.activeElement.blur()
+const changeLanguage = (languageId: string) => {
+  store.changeLanguage(languageId)
+
+  if (document.activeElement instanceof HTMLElement) {
+    document.activeElement.blur()
+  }
 }
 </script>
 
@@ -23,7 +26,7 @@ const changeLanguage = (language) => {
       tabindex="0"
     >
       <li v-for="language in store.availableLanguages" :key="language.id">
-        <div class="btn btn-ghost w-full justify-start" tabindex="0" @click="changeLanguage(language)">
+        <div class="btn btn-ghost w-full justify-start" tabindex="0" @click="changeLanguage(language.id)">
           <span class="truncate">{{ language.name }}</span>
         </div>
       </li>

@@ -30,8 +30,8 @@ const langs = {
   typescript
 }
 
-const get = (langcode) => {
-  return langs[langcode] ?? plaintext
+const get = (langcode: string) => {
+  return langs[langcode as keyof typeof langs] ?? plaintext
 }
 
 export default {

@@ -2,9 +2,12 @@
 import { LanguageIcon } from '@heroicons/vue/24/solid'
 import { changeI18nLocale } from '@/locales'
 
-const changeLocale = (locale) => {
+const changeLocale = (locale: string) => {
   changeI18nLocale(locale)
-  document.activeElement.blur()
+
+  if (document.activeElement instanceof HTMLElement) {
+    document.activeElement.blur()
+  }
 }
 </script>
 

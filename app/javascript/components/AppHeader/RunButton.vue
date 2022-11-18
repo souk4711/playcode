@@ -6,7 +6,7 @@ import { usePlayStore } from '@/stores'
 const store = usePlayStore()
 
 const disabled = computed(() => {
-  if (!store.language) return true
+  if (store.language == null) return true
   if (store.isRunning) return true
   return false
 })

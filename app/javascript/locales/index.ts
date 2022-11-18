@@ -3,6 +3,8 @@ import en from './en.json'
 import zhHans from './zh-Hans.json'
 import zhHant from './zh-Hant.json'
 
+type Locale = 'en' | 'zhHans' | 'zhHant'
+
 const i18n = (() => {
   let locale = localStorage.getItem('i18n.locale')
   if (locale === null) locale = 'en'
@@ -19,8 +21,8 @@ const i18n = (() => {
   })
 })()
 
-const changeI18nLocale = (locale) => {
-  i18n.global.locale.value = locale
+const changeI18nLocale = (locale: string) => {
+  i18n.global.locale.value = locale as Locale
   localStorage.setItem('i18n.locale', locale)
 }
 
