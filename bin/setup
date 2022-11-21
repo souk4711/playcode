@@ -1,0 +1,9 @@
+#!/usr/bin/env sh
+
+set -e
+
+echo "== Copying dotenv file =="
+cp -n .env.defaults .env
+
+echo "== Preparing database =="
+bin/task db:setup

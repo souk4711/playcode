@@ -1,0 +1,39 @@
+version: 3
+
+tasks:
+  create:
+    desc: Creates the database from DATABASE_URL
+    cmds:
+      - dbmate create
+  drop:
+    desc: Drops the database (if it exists) from DATABASE_URL
+    cmds:
+      - dbmate drop
+  migrate:
+    desc: Migrate to the latest version
+    cmds:
+      - dbmate migrate
+  migrate:new:
+    desc: Generate a new migration file
+    cmds:
+      - dbmate new {{.CLI_ARGS}}
+  migrate:up:
+    desc: Create database (if necessary) and migrate to the latest version
+    cmds:
+      - dbmate up
+  migrate:down:
+    desc: Rollback the most recent migration
+    cmds:
+      - dbmate down
+  migrate:status:
+    desc: List applied and pending migrations
+    cmds:
+      - dbmate status
+  seed:
+    desc: Loads the seed data from db/seeds.sql
+    cmds:
+      - psql -d "$DATABASE_URL" -a -f db/seeds.sql
+  setup:
+    desc: Creates all databases, loads all schemas, and initializes with the seed data
+    cmds:
+      - bin/task db:migrate:up && bin/task db:seed

@@ -1,0 +1,15 @@
+version: 3
+
+tasks:
+  air:
+    desc: Install Air (Live reload for Go apps)
+    cmds:
+      - go install github.com/cosmtrek/air@latest
+  dbmate:
+    desc: Install Dbmate (A lightweight, framework-agnostic database migration tool)
+    cmds:
+      - go install github.com/amacneil/dbmate@latest
+  goreman:
+    desc: Install Goreman (Clone of foreman written in golang)
+    cmds:
+      - go install github.com/mattn/goreman@latest

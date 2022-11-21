@@ -19,6 +19,8 @@
 *.sw?
 
 # Logs
+/log/
+!/log/.keep
 logs
 *.log
 npm-debug.log*
@@ -29,3 +31,7 @@ lerna-debug.log*
 
 # Temporary files
 /tmp/
+!/tmp/.keep
+
+# Dotenv
+.env
