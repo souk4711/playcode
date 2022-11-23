@@ -1,22 +1,19 @@
 package runs
 
 import (
+	"net/http"
+
 	"github.com/gin-gonic/gin"
+
+	"github.com/souk4711/playcode/app/models"
 )
 
-type RunResult struct {
-	Status string `json:"status"`
-	Reason string `json:"reason"`
-	Stdout string `json:"stdout"`
-	Stderr string `json:"stderr"`
-}
-
 func Create(c *gin.Context) {
-	result := RunResult{
+	result := models.RunResult{
 		Status: "ok",
 		Reason: "",
 		Stdout: "Hello, World",
 		Stderr: "",
 	}
-	c.JSON(200, result)
+	c.JSON(http.StatusCreated, result)
 }

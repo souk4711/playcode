@@ -1,4 +1,4 @@
-package controllers
+package config
 
 import (
 	"github.com/gin-gonic/gin"
@@ -7,7 +7,7 @@ import (
 	"github.com/souk4711/playcode/app/controllers/runs"
 )
 
-func Configure(r *gin.Engine) {
+func routes(r *gin.Engine) {
 	r.GET("/languages", languages.Index)
 	r.POST("/runs", runs.Create)
 }
