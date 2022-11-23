@@ -5,17 +5,8 @@ version: 3
 includes:
   db: ./lib/tasks/db.yml
   docker: ./lib/tasks/docker.yml
+  go: ./lib/tasks/go.yml
   install: ./lib/tasks/install.yml
 
 dotenv:
   - .env
-
-tasks:
-  format:
-    desc: Format with the gofmt
-    cmds:
-      - gofmt -s -w .
-  lint:
-    desc: Lint with the golangci-lint
-    cmds:
-      - golangci-lint run

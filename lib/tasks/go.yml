@@ -1,0 +1,11 @@
+version: 3
+
+tasks:
+  lint:
+    desc: Lint with the golangci-lint
+    cmds:
+      - golangci-lint run --fix
+  lint:check:
+    desc: Lint with the golangci-lint (without --fix)
+    cmds:
+      - golangci-lint run
