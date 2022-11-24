@@ -5,7 +5,8 @@ import (
 
 	"github.com/gin-gonic/gin"
 
-	"github.com/souk4711/playcode/app/models"
+	"github.com/souk4711/playcode/app/types/controllers/languages"
+	"github.com/souk4711/playcode/app/types/models"
 )
 
 func Index(c *gin.Context) {
@@ -24,7 +25,7 @@ func Index(c *gin.Context) {
 		{ID: "scala", Name: "Scala (3.1.3)", Langcode: "scala"},
 		{ID: "typescript", Name: "Typescript (4.8.2)", Langcode: "typescript"},
 	}
-	c.JSON(http.StatusOK, gin.H{
-		"items": items,
+	c.JSON(http.StatusOK, languages.IndexResponse{
+		Items: items,
 	})
 }

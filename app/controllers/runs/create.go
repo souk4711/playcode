@@ -5,7 +5,8 @@ import (
 
 	"github.com/gin-gonic/gin"
 
-	"github.com/souk4711/playcode/app/models"
+	"github.com/souk4711/playcode/app/types/controllers/runs"
+	"github.com/souk4711/playcode/app/types/models"
 )
 
 func Create(c *gin.Context) {
@@ -15,5 +16,5 @@ func Create(c *gin.Context) {
 		Stdout: "Hello, World",
 		Stderr: "",
 	}
-	c.JSON(http.StatusCreated, result)
+	c.JSON(http.StatusCreated, runs.CreateResponse{RunResult: result})
 }
