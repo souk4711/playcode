@@ -1,4 +1,4 @@
-package models
+package entities
 
 type Language struct {
 	ID       string `json:"id"`

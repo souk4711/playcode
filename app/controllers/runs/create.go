@@ -5,16 +5,23 @@ import (
 
 	"github.com/gin-gonic/gin"
 
-	"github.com/souk4711/playcode/app/types/controllers/runs"
-	"github.com/souk4711/playcode/app/types/models"
+	"github.com/souk4711/playcode/app/entities"
 )
 
-func Create(c *gin.Context) {
-	result := models.RunResult{
+type CreateResponse struct {
+	entities.RunResult
+}
+
+func NewCreateResponse() *CreateResponse {
+	result := entities.RunResult{
 		Status: "ok",
 		Reason: "",
 		Stdout: "Hello, World",
 		Stderr: "",
 	}
-	c.JSON(http.StatusCreated, runs.CreateResponse{RunResult: result})
+	return &CreateResponse{RunResult: result}
+}
+
+func Create(c *gin.Context) {
+	c.JSON(http.StatusCreated, NewCreateResponse())
 }

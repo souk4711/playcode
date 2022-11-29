@@ -1,4 +1,4 @@
-package models
+package entities
 
 type RunResult struct {
 	Status string `json:"status"`
