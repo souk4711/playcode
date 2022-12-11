@@ -1,7 +1,9 @@
 import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
 import { useSessionStorage } from '@vueuse/core'
+import axios, { AxiosError } from 'axios'
 import api from '@/api'
+import type { ErrorResponse } from '@/types/api'
 import type { Language, RunFile, RunResult } from '@/types/models'
 
 const enum PlayStatus {
@@ -30,6 +32,7 @@ export const usePlayStore = defineStore('play', () => {
   const runFileInitialValue: RunFile = { content: '' }
   const runFile = useSessionStorage<RunFile>('playStore#runFile', runFileInitialValue, { mergeDefaults: true })
   const runResult = ref<RunResult | null>(null)
+  const runException = ref<string>('')
 
   const fetch = async () => {
     const r = await api.languages.list()
@@ -45,7 +48,13 @@ export const usePlayStore = defineStore('play', () => {
       })
       runResult.value = r
       playStatus.value = PlayStatus.Completed
-    } catch {
+    } catch (e) {
+      if (axios.isAxiosError(e)) {
+        const err = e as AxiosError<ErrorResponse>
+        runException.value = err.response?.data?.error ?? err.message
+      } else {
+        runException.value = (e as Error)?.message ?? ''
+      }
       playStatus.value = PlayStatus.Unexpected
     }
   }
@@ -62,6 +71,7 @@ export const usePlayStore = defineStore('play', () => {
 
     runFile,
     runResult,
+    runException,
 
     fetch,
     run

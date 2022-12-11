@@ -18,20 +18,22 @@ const store = usePlayStore()
 
     <div v-show="store.isUnexpected" class="w-full">
       <div class="divider text-base-content/40">Errors</div>
-      <div></div>
+      <div>
+        <pre class="whitespace-pre-wrap">{{ store.runException }}</pre>
+      </div>
     </div>
 
     <div v-show="store.isCompleted" class="w-full">
       <div class="divider text-base-content/40">Standard Error</div>
       <div>
-        <pre>{{ store.runResult?.stderr }}</pre>
+        <pre class="whitespace-pre-wrap">{{ store.runResult?.stderr }}</pre>
       </div>
     </div>
 
     <div v-show="store.isCompleted" class="w-full">
       <div class="divider text-base-content/40">Standard Output</div>
       <div>
-        <pre>{{ store.runResult?.stdout }}</pre>
+        <pre class="whitespace-pre-wrap">{{ store.runResult?.stdout }}</pre>
       </div>
     </div>
   </div>

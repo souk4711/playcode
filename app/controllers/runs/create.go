@@ -35,13 +35,17 @@ func NewCreateResponse(r *pb.CreateResponse) *CreateResponse {
 func Create(c *gin.Context) {
 	var req CreateRequest
 	if err := c.ShouldBind(&req); err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{})
+		c.JSON(http.StatusInternalServerError, gin.H{
+			"error": err.Error(),
+		})
 		return
 	}
 
 	var language = models.Language{ID: uuid.MustParse(req.LanguageID)}
 	if err := repositories.Language.Find(c, &language); err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{})
+		c.JSON(http.StatusInternalServerError, gin.H{
+			"error": err.Error(),
+		})
 		return
 	}
 
@@ -50,7 +54,9 @@ func Create(c *gin.Context) {
 	r := pb.CreateRequest{Lang: lang, Files: []*pb.File{&file}}
 
 	if r, err := hcr.API.Runs.Create(c, &r); err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{})
+		c.JSON(http.StatusInternalServerError, gin.H{
+			"error": err.Error(),
+		})
 	} else {
 		c.JSON(http.StatusCreated, NewCreateResponse(r))
 	}

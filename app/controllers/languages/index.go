@@ -29,7 +29,9 @@ func NewIndexResponse(languages []models.Language) *IndexResponse {
 func Index(c *gin.Context) {
 	var languages []models.Language
 	if err := repositories.Language.FindAll(c, &languages); err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{})
+		c.JSON(http.StatusInternalServerError, gin.H{
+			"error": err.Error(),
+		})
 		return
 	}
 
