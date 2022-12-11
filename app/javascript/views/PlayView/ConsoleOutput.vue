@@ -6,7 +6,7 @@ const store = usePlayStore()
 </script>
 
 <template>
-  <div class="w-full flex flex-col items-center px-4 py-2">
+  <div class="w-full flex flex-col items-center px-4 py-2 scrollbar">
     <h1 class="font-bold">Execution</h1>
 
     <div v-show="store.isRunning" class="w-full">
@@ -24,14 +24,14 @@ const store = usePlayStore()
     <div v-show="store.isCompleted" class="w-full">
       <div class="divider text-base-content/40">Standard Error</div>
       <div>
-        <p>{{ store.runResult?.stderr }}</p>
+        <pre>{{ store.runResult?.stderr }}</pre>
       </div>
     </div>
 
     <div v-show="store.isCompleted" class="w-full">
       <div class="divider text-base-content/40">Standard Output</div>
       <div>
-        <p>{{ store.runResult?.stdout }}</p>
+        <pre>{{ store.runResult?.stdout }}</pre>
       </div>
     </div>
   </div>
