@@ -16,6 +16,10 @@ func NewRepository(db *bun.DB) *Repository {
 	return &Repository{db: db}
 }
 
+func (repo *Repository) Find(ctx context.Context, language *models.Language) error {
+	return repo.db.NewSelect().Model(language).WherePK().Scan(ctx)
+}
+
 func (repo *Repository) FindAll(ctx context.Context, languages *[]models.Language) error {
 	return repo.db.NewSelect().Model((*models.Language)(nil)).Scan(ctx, languages)
 }

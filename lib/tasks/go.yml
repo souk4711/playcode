@@ -9,3 +9,20 @@ tasks:
     desc: Lint with the golangci-lint (without --fix)
     cmds:
       - golangci-lint run
+  protoc:
+    desc: Generate protobuf Go files
+    cmds:
+      - >
+        protoc
+        --proto_path=$SRC
+        --go_out=./pkg/hcr --go_opt=Mlanguages.proto=./pb/languages
+        --go-grpc_out=./pkg/hcr --go-grpc_opt=Mlanguages.proto=./pb/languages
+        $SRC/languages.proto
+      - >
+        protoc
+        --proto_path=$SRC
+        --go_out=./pkg/hcr --go_opt=Mruns.proto=./pb/runs
+        --go-grpc_out=./pkg/hcr --go-grpc_opt=Mruns.proto=./pb/runs
+        $SRC/runs.proto
+    env:
+      SRC: ../hakoniwa-code-runner/protos

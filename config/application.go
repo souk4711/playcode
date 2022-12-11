@@ -8,6 +8,7 @@ import (
 	"github.com/uptrace/bun"
 	"github.com/uptrace/bun/dialect/pgdialect"
 	"github.com/uptrace/bun/driver/pgdriver"
+	"github.com/uptrace/bun/extra/bundebug"
 	"go.uber.org/zap"
 
 	"github.com/souk4711/playcode/config/initializers"
@@ -24,6 +25,7 @@ func Initialize() {
 	utils.LogFatalErr(initializers.InitializeDotenv())
 	utils.LogFatalErr(initializers.InitializeGin())
 	utils.LogFatalErr(initializers.InitializeZap())
+	utils.LogFatalErr(initializers.InitializeHCR())
 
 	Router = newRouter()
 	DB = newDB()
@@ -41,5 +43,10 @@ func newRouter() *gin.Engine {
 func newDB() *bun.DB {
 	dsn := os.Getenv("DATABASE_URL")
 	sqldb := sql.OpenDB(pgdriver.NewConnector(pgdriver.WithDSN(dsn)))
-	return bun.NewDB(sqldb, pgdialect.New())
+	db := bun.NewDB(sqldb, pgdialect.New())
+	db.AddQueryHook(bundebug.NewQueryHook(
+		bundebug.WithEnabled(false),
+		bundebug.FromEnv("BUNDEBUG"),
+	))
+	return db
 }

@@ -5,7 +5,8 @@ CREATE TABLE languages (
   updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
   name VARCHAR(255),
   langcode VARCHAR(255),
-  cr_langcode VARCHAR(255)
+  cr_langcode VARCHAR(255),
+  cr_main_filename VARCHAR(255)
 );
 
 -- migrate:down

@@ -23,7 +23,8 @@ CREATE TABLE public.languages (
     updated_at timestamp without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL,
     name character varying(255),
     langcode character varying(255),
-    cr_langcode character varying(255)
+    cr_langcode character varying(255),
+    cr_main_filename character varying(255)
 );
 
 
