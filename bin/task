@@ -1,3 +1,5 @@
 #!/usr/bin/env sh
 
+# Task is a task runner / build tool that aims to be simpler and easier
+# to use than, visit https://taskfile.dev/ for detail.
 task "$@"
