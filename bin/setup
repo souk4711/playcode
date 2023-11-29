@@ -2,5 +2,5 @@
 
 set -xe
 
-cp -n .env.defaults .env
+cp -n .env.defaults .env || true
 bin/task db:setup
