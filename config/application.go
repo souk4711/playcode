@@ -41,7 +41,7 @@ func newRouter() *gin.Engine {
 }
 
 func newDB() *bun.DB {
-	dsn := os.Getenv("DATABASE_URL")
+	dsn := os.Getenv("PLAYCODE_DATABASE_URL")
 	sqldb := sql.OpenDB(pgdriver.NewConnector(pgdriver.WithDSN(dsn)))
 	db := bun.NewDB(sqldb, pgdialect.New())
 	db.AddQueryHook(bundebug.NewQueryHook(

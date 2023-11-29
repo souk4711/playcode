@@ -7,7 +7,7 @@ import (
 )
 
 func InitializeHCR() error {
-	uri := os.Getenv("CODERUNNER_URL")
+	uri := os.Getenv("PLAYCODE_CODERUNNER_URL")
 	if client, err := hcr.NewClient(uri); err != nil {
 		return err
 	} else {
