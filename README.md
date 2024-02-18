@@ -15,26 +15,26 @@ A code playground support a variety of languages.
 
 #### 1. Check out the repository
 
-```sh
+```console
 $ git clone git@github.com:souk4711/playcode.git
 ```
 
 #### 2. Create and setup the database
 
-```sh
+```console
 $ bin/task docker:up
 $ bin/setup
 ```
 
 #### 3. Start the Go server & Vite devserver
 
-```sh
+```console
 $ bin/dev
 ```
 
 #### 4. Start Hakoniwa Code Runner (optional)
 
-```sh
+```console
 $ cd ../hakoniwa-code-runner
 $ make start-server
 ```
