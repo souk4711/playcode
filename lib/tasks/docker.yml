@@ -4,8 +4,8 @@ tasks:
   up:
     desc: Create and start containers
     cmds:
-      - podman-compose up --force-recreate
+      - docker compose up --force-recreate
   down:
     desc: Stop and remove containers
     cmds:
-      - podman-compose down
+      - docker compose down
